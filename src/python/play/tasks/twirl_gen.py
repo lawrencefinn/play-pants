@@ -24,7 +24,7 @@ class TwirlGen(SimpleCodegenTask, NailgunTask):
     super(TwirlGen, cls).register_options(register)
     cls.register_jvm_tool(register, 'play-pants-tool',
         classpath=[
-          JarDependency(org='com.thesamet', name='play-pants-tool', rev='0.0.6'),
+          JarDependency(org='com.actioniq.pants', name='play-pants-tool', rev='0.0.6'),
         ])
 
   def synthetic_target_type(self, target):
@@ -39,7 +39,7 @@ class TwirlGen(SimpleCodegenTask, NailgunTask):
                       .format(class_type=type(target).__name__))
 
     classpath = self.tool_classpath('play-pants-tool')
-    main = 'playpants.TwirlGen'
+    main = 'playpants.tool.TwirlGen'
     build_root = get_buildroot()
 
     sources = [os.path.join(build_root, s) for s in target.sources_relative_to_buildroot()]
@@ -54,7 +54,10 @@ class TwirlGen(SimpleCodegenTask, NailgunTask):
       '--target', target_workdir
     ]
 
-    result = self.runjava(classpath=classpath, main=main, args=args, workunit_name='twirl-gen')
+    jvm_options = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005']
+    jvm_options = []
+
+    result = self.runjava(classpath=classpath, main=main, args=args, workunit_name='twirl-gen', jvm_options=jvm_options)
 
     if result != 0:
       raise TaskError('twirl-gen ... exited non-zero ({code})'.format(code=result))

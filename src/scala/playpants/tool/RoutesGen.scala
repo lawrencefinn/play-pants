@@ -1,9 +1,9 @@
-package playpants
+package playpants.tool
 
 import java.io.File
 
-import play.routes.compiler.{ RoutesGenerator, RoutesCompilationError }
-import play.routes.compiler.RoutesCompiler.{ RoutesCompilerTask, GeneratedSource }
+import play.router.RoutesCompiler
+import play.router.RoutesCompiler.RoutesCompilationError
 
 object RoutesGen {
   case class Params(sources: Seq[File] = Seq.empty,
@@ -16,56 +16,46 @@ object RoutesGen {
   def main(args: Array[String]): Unit = {
     val parser = new scopt.OptionParser[Params]("routes-gen") {
       head("routes-gen", "1.0")
-      opt[Seq[File]]("sources") valueName("<input1,input2>") action {
+      opt[Seq[File]]("sources") valueName "<input1,input2>" action {
         (sources, c) => c.copy(sources = sources)
-      } text("comma separated list of route files")
+      } text "comma separated list of route files"
 
-      opt[Seq[String]]("routes_imports") valueName("<import1,import2>") action {
+      opt[Seq[String]]("routes_imports") valueName "<import1,import2>" action {
         (routes, c) => c.copy(routesImports = routes)
-      } text("Comma separated list of imports for the router.")
+      } text "Comma separated list of imports for the router."
 
-      opt[Boolean]("generate_reverse_router") valueName("<value>") action {
+      opt[Boolean]("generate_reverse_router") valueName "<value>" action {
         (v, c) => c.copy(generateReverseRouter = v)
-      } text("Whether the reverse router should be generated. Setting to false may reduce compile times if it's not needed")
+      } text "Whether the reverse router should be generated. Setting to false may reduce compile times if it's not needed"
 
-      opt[Boolean]("generate_forward_router") valueName("<value>") action {
+      opt[Boolean]("generate_forward_router") valueName "<value>" action {
         (v, c) => c.copy(generateForwardRouter = v)
-      } text("Whether the forward router should be generated.")
+      } text "Whether the forward router should be generated."
 
-      opt[Boolean]("namespace_reverse_router") valueName("<value>") action {
+      opt[Boolean]("namespace_reverse_router") valueName "<value>" action {
         (v, c) => c.copy(namespaceReverseRouter = v)
-      } text("Whether the reverse router should be namespaced. Useful if you have many routers that use the same actions.")
+      } text "Whether the reverse router should be namespaced. Useful if you have many routers that use the same actions."
 
-      opt[File]("target") required() valueName("<target_dir>") action {
+      opt[File]("target") required() valueName "<target_dir>" action {
         (target, c) => c.copy(target = target)
-      } text("directory to write generated sources")
+      } text "directory to write generated sources"
     }
-
-    val generator = play.routes.compiler.InjectedRoutesGenerator
 
     parser.parse(args, Params()) match {
       case None => System.exit(1)
       case Some(params) =>
-        val tasks = params.sources.map {
-          source =>
-            RoutesCompilerTask(
-              source,
-              params.routesImports,
-              forwardsRouter = params.generateForwardRouter,
-              reverseRouter = params.generateReverseRouter,
-              namespaceReverseRouter = params.namespaceReverseRouter)
-        }
-        val results: Seq[Either[Seq[RoutesCompilationError], Seq[File]]] =
-          tasks.map {
-            task =>
-              play.routes.compiler.RoutesCompiler.compile(task, generator, params.target)
+        val errors = params.sources.flatMap { source =>
+          try {
+            RoutesCompiler.compile(source, params.target, params.routesImports,
+              params.generateReverseRouter, true, params.namespaceReverseRouter)
+            None
+          } catch {
+            case e: RoutesCompilationError => Some(e)
           }
-        val errors = results.collect {
-          case Left(errors) => errors
-        }.flatten.map {
-          case RoutesCompilationError(source, message, line, column) =>
-            val linePart = line.map(t => s":$t").getOrElse("")
-            s"$source$linePart: $message"
+        }
+        val msgs = errors.map { error =>
+            val linePart = error.line.map(t => s":$t").getOrElse("")
+            s"${error.source}$linePart: ${error.message}"
         }
 
         if (errors.nonEmpty) {
@@ -75,4 +65,3 @@ object RoutesGen {
     }
   }
 }
-

@@ -25,7 +25,7 @@ class RoutesGen(SimpleCodegenTask, NailgunTask):
     super(RoutesGen, cls).register_options(register)
     cls.register_jvm_tool(register, 'play-pants-tool',
         classpath=[
-          JarDependency(org='com.thesamet', name='play-pants-tool', rev='0.0.6'),
+          JarDependency(org='com.actioniq.pants', name='play-pants-tool', rev='0.0.6'),
         ])
 
   def synthetic_target_type(self, target):
@@ -44,7 +44,7 @@ class RoutesGen(SimpleCodegenTask, NailgunTask):
                       .format(class_type=type(target).__name__))
 
     classpath = self.tool_classpath('play-pants-tool')
-    main = 'playpants.RoutesGen'
+    main = 'playpants.tool.RoutesGen'
     build_root = get_buildroot()
 
     sources = [os.path.join(build_root, s) for s in target.sources_relative_to_buildroot() if self._is_routes_file(s)]

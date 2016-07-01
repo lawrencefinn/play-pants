@@ -1,5 +1,4 @@
-jar_library(name = 'play-pants-tool',
-            jars = [
-              jar('com.thesamet', 'play-pants-tool', '0.0.3'),
-            ])
-
+#jar_library(name = 'play-pants-tool',
+#            jars = [
+#              jar('com.thesamet', 'play-pants-tool', '0.0.3'),
+#            ])

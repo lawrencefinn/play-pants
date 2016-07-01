@@ -12,10 +12,10 @@ public_repo = Repository(name='public',
                          url='https://oss.sonatype.org/#stagingRepositories',
                          push_db_basedir=os.path.join('build-support', 'ivy', 'pushdb'))
 
-def com_thesamet_publication_metadata(description):
+def com_actioniq_publication_metadata(description):
   return OSSRHPublicationMetadata(
     description=description,
-    url='https://github.com/thesamet/play-pants',
+    url='https://github.com/ActionIQ/play-pants',
     licenses=[
       License(
         name='Apache License, Version 2.0',
@@ -24,13 +24,13 @@ def com_thesamet_publication_metadata(description):
     ],
     developers=[
       Developer(
-        name='Nadav Sr. Samet',
-        email='nadav@thesamet.com',
-        url='https://github.com/thesamet/play-pants'
+        name='Nitay Joffe',
+        email='nitay@actioniq.com',
+        url='https://github.com/ActionIQ/play-pants'
       )
     ],
     scm=Scm.github(
-      user='thesamet',
+      user='ActionIQ',
       repo='play-pants'
     )
   )
@@ -40,7 +40,7 @@ def build_file_aliases():
   return BuildFileAliases(
     objects={
       'public': public_repo,  # key 'public' must match name='public' above
-      'publication_metadata': com_thesamet_publication_metadata
+      'publication_metadata': com_actioniq_publication_metadata
     },
   )
 
