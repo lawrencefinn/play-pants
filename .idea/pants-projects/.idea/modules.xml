@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/._module.iml" filepath="$PROJECT_DIR$/._module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3rdparty_jvm_play/3rdparty_jvm_play.iml" filepath="$PROJECT_DIR$/3rdparty_jvm_play/3rdparty_jvm_play.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3rdparty_jvm_routes-compiler/3rdparty_jvm_routes-compiler.iml" filepath="$PROJECT_DIR$/3rdparty_jvm_routes-compiler/3rdparty_jvm_routes-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3rdparty_jvm_scopt/3rdparty_jvm_scopt.iml" filepath="$PROJECT_DIR$/3rdparty_jvm_scopt/3rdparty_jvm_scopt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3rdparty_jvm_twirl-compiler/3rdparty_jvm_twirl-compiler.iml" filepath="$PROJECT_DIR$/3rdparty_jvm_twirl-compiler/3rdparty_jvm_twirl-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/___play-pants-tool/___play-pants-tool.iml" filepath="$PROJECT_DIR$/___play-pants-tool/___play-pants-tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src_python_play_plugin/src_python_play_plugin.iml" filepath="$PROJECT_DIR$/src_python_play_plugin/src_python_play_plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src_scala_playpants_runner_playpants-runner/src_scala_playpants_runner_playpants-runner.iml" filepath="$PROJECT_DIR$/src_scala_playpants_runner_playpants-runner/src_scala_playpants_runner_playpants-runner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src_scala_playpants_tool_play-pants-tool/src_scala_playpants_tool_play-pants-tool.iml" filepath="$PROJECT_DIR$/src_scala_playpants_tool_play-pants-tool/src_scala_playpants_tool_play-pants-tool.iml" />
+    </modules>
+  </component>
+</project>

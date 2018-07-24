@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PantsSettings">
+    <option name="linkedExternalProjectsSettings">
+      <PantsProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../.." />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../.." />
+            <option value="$PROJECT_DIR$/../../3rdparty/jvm:play" />
+            <option value="$PROJECT_DIR$/../../3rdparty/jvm:routes-compiler" />
+            <option value="$PROJECT_DIR$/../../3rdparty/jvm:scopt" />
+            <option value="$PROJECT_DIR$/../../3rdparty/jvm:twirl-compiler" />
+            <option value="$PROJECT_DIR$/../../:play-pants-tool" />
+            <option value="$PROJECT_DIR$/../../src/python/play:plugin" />
+            <option value="$PROJECT_DIR$/../../src/scala/playpants/runner:playpants-runner" />
+            <option value="$PROJECT_DIR$/../../src/scala/playpants/tool:play-pants-tool" />
+          </set>
+        </option>
+        <option name="targetSpecs">
+          <list>
+            <option value="./::" />
+          </list>
+        </option>
+      </PantsProjectSettings>
+    </option>
+    <option name="resolverVersion" value="15" />
+  </component>
+</project>

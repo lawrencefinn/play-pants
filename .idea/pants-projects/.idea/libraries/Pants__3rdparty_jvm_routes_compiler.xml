@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Pants: 3rdparty/jvm:routes-compiler">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/pants/com.typesafe.play/routes-compiler_2.11/jars/routes-compiler_2.11-2.6.9.jar!/" />
+      <root url="jar://$USER_HOME$/.ivy2/pants/com.typesafe.play/twirl-api_2.11/jars/twirl-api_2.11-1.3.12.jar!/" />
+      <root url="jar://$USER_HOME$/.ivy2/pants/commons-io/commons-io/jars/commons-io-2.5.jar!/" />
+      <root url="jar://$USER_HOME$/.ivy2/pants/org.apache.commons/commons-lang3/jars/commons-lang3-3.6.jar!/" />
+      <root url="jar://$USER_HOME$/.ivy2/pants/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.6.jar!/" />
+      <root url="jar://$USER_HOME$/.ivy2/pants/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.6.jar!/" />
+      <root url="jar://$USER_HOME$/.ivy2/pants/org.scala-lang/scala-library/jars/scala-library-2.11.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
